@@ -5,10 +5,9 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  // console.log("test:", message, sender, sendResponse);
   if (message.action === "clearData") {
     const targetOrigin = "https://dokokani-eki-net.com/*";
-    chrome.browsingData.remove(
+    chrome.browsingData.remove( // doesn't work
       { origins: [targetOrigin] },
       {
         "cookies": true,
@@ -20,7 +19,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         "webSQL": false
       },
       () => {
-        // console.log("Data cleared for origin:", targetOrigin);
+        console.log("Data cleared for origin:", targetOrigin);
       }
     );
   }
