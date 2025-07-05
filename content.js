@@ -22,6 +22,9 @@ window.addEventListener('load', () => {
       if (err) {
         if (err.textContent == "検索回数上限エラー") {
           console.log("Error occurred in the search limit.");
+          if (window.confirm("このサイトのデータを削除しますか？")) {
+            chrome.runtime.sendMessage({ action: "clearData" });
+          }
         }
       }
     }
